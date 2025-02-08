@@ -1,0 +1,49 @@
+name: Flutter CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Check out the code
+      uses: actions/checkout@v2
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: 'latest'
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Run tests
+      run: flutter test
+
+    - name: Build Runner
+      run: flutter pub run build_runner build --delete-conflicting-outputs
+
+    - name: Build APK
+      run: flutter build apk --release
+
+    - name: Build IPA
+      run: flutter build ios --release --no-codesign
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v2
+      with:
+        name: apk
+        path: build/app/outputs/flutter-apk/app-release.apk
+
+    - name: Upload IPA
+      uses: actions/upload-artifact@v2
+      with:
+        name: ipa
+        path: build/ios/iphoneos/*.ipa
