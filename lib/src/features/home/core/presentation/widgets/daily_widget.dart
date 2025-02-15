@@ -1,5 +1,4 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:lafyamind_app/src/features/home/core/providers/daily_data_provider.dart';
 
 import '../../../../core/common_import.dart';
 
@@ -13,7 +12,7 @@ class DailyWidget extends StatefulHookConsumerWidget {
 class _DailyWidgetState extends ConsumerState<DailyWidget> {
   @override
   Widget build(BuildContext context) {
-    final dailyData = ref.watch(dailyDataProvider);
+    // final dailyData = ref.watch(dailyDataProvider);
 
     return Column(
       children: [

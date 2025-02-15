@@ -4,7 +4,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lafyamind_app/src/exceptions/error_logger.dart';
 import 'package:lafyamind_app/src/localization/string_hardcoded.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'src/app.dart';
