@@ -15,6 +15,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int selectedTab = 0;
 
+  String? nullVall;
+
   List<Widget> screens = List.generate(
       4,
       (int i) => i == 0
@@ -51,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: SafeArea(
           child: Scaffold(
         backgroundColor: AppColors.background,
-        body: screens[selectedTab],
+        body: Text(nullVall!),
         bottomNavigationBar: BottomNavigationBar(
           elevation: 10,
           currentIndex: selectedTab,
