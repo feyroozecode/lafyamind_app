@@ -10,22 +10,36 @@ class DayHomourWidget extends StatefulWidget {
 }
 
 class _DayHomourWidgetState extends State<DayHomourWidget> {
-  _getMoodColor(int mood) {
-    switch (mood) {
-      case 1:
-        return Colors.red;
-      case 2:
-        return Colors.orange;
-      case 3:
-        return Colors.yellow;
-      case 4:
-        return Colors.green;
-      case 5:
-        return Colors.blue;
-      default:
-        return Colors.grey;
-    }
-  }
+  //List<int> humourStateList = [1, 2, 3, 4, 5];
+
+  final Set<List<Map<String, dynamic>>> _getMoodData =
+  {
+    [
+      {
+    
+          "color":  Colors.red,
+          "icon": Icons.sentiment_dissatisfied
+        },
+        {
+          "color":  Colors.orange,
+          "icon": Icons.sentiment_neutral
+        },
+ {
+          "color":  Colors.yellow,
+          "icon": Icons.sentiment_dissatisfied_sharp
+        },
+ {
+          "color":  Colors.green,
+          "icon": Icons.sentiment_satisfied
+        },
+
+        {
+          "color":  Colors.blue,
+          "icon": Icons.sentiment_dissatisfied_sharp
+        };
+        
+    ]
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +53,13 @@ class _DayHomourWidgetState extends State<DayHomourWidget> {
             gapH12,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [1, 2, 3, 4, 5]
+              children: humourStateList
                   .map((mood) => IconButton(
                         onPressed: () {},
                         icon: Icon(
-                          Icons.sentiment_very_satisfied_outlined,
-                          color: _getMoodColor(mood),
+                          mood== 1? 
+                          Icons.sentiment_very_satisfied_outlined ,
+                          color: _getMoodData(mood).entries.map((m)=> m.value['color'] as Color),
                         ),
                       ))
                   .toList(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lafyamind_app/src/constants/app_spacing.dart';
+import 'package:lafyamind_app/src/features/home/core/presentation/widgets/day_homour_widget.dart';
 
 import '../../../../constants/app_colors.dart';
 import 'widgets/daily_widget.dart';
@@ -15,22 +16,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int selectedTab = 0;
 
-  String? nullVall;
-
   List<Widget> screens = List.generate(
       4,
       (int i) => i == 0
           ? Column(
-              children: [
-                const DailyWidget(),
-                ...List.generate(
-                    2,
-                    (int i2) => const SizedBox(
-                          child: Center(
-                            child: Text("i"),
-                          ),
-                        ))
-              ],
+              children: [const DailyWidget(), DayHomourWidget()],
             )
           : SizedBox(
               child: Center(
@@ -53,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: SafeArea(
           child: Scaffold(
         backgroundColor: AppColors.background,
-        body: Text(nullVall!),
+        body: screens[selectedTab],
         bottomNavigationBar: BottomNavigationBar(
           elevation: 10,
           currentIndex: selectedTab,
