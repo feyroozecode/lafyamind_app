@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lafyamind_app/src/constants/app_spacing.dart';
-import 'package:lafyamind_app/src/features/home/core/presentation/widgets/day_homour_widget.dart';
+import 'package:lafyamind_app/src/features/home/core/presentation/widgets/home_widget.dart';
 
 import '../../../../constants/app_colors.dart';
-import 'widgets/daily_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,9 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> screens = List.generate(
       4,
       (int i) => i == 0
-          ? Column(
-              children: [const DailyWidget(), DayHomourWidget()],
-            )
+          ? const HomeWidget()
           : SizedBox(
               child: Center(
                 child: Text("Screen $i"),

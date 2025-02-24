@@ -15,11 +15,10 @@ class HomeWidget extends StatefulHookConsumerWidget {
 class _HomeWidgetState extends ConsumerState<HomeWidget> {
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: screenPadding,
-      child: Column(
-        children: const [DayHomourWidget(), DailyWidget()],
-      ),
-    );
+    return Padding(
+        padding: screenPadding,
+        child: Column(
+          children: [const DailyWidget(), DayHomourWidget()],
+        ));
   }
 }

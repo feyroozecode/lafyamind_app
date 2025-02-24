@@ -15,21 +15,20 @@ class _DailyWidgetState extends ConsumerState<DailyWidget> {
   Widget build(BuildContext context) {
     // final dailyData = ref.watch(dailyDataProvider);
 
-    return Padding(
-        padding: screenPadding,
-        child: Card(
-            child: Padding(
+    return Card(
+        margin: screenPadding,
+        child: Padding(
           padding: screenPadding,
           child: Column(
             children: [
               Text(
                 'Today',
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: context.theme.textTheme.headlineMedium,
               ),
               const SizedBox(height: 4),
 
               /// barre d'anxiety avec des EMOJIE
-              
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -62,6 +61,6 @@ class _DailyWidgetState extends ConsumerState<DailyWidget> {
               const SizedBox(height: 16),
             ],
           ),
-        )));
+        ));
   }
 }
