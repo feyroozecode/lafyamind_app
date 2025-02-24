@@ -32,7 +32,7 @@ class DayHomourWidget extends ConsumerWidget {
           child: Column(
             children: [
               Text("Comment vous sentez-vous aujourd’hui ?",
-                  style: context.theme.textTheme.headlineMedium),
+                  style: context.theme.textTheme.headlineSmall),
               gapH12,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
