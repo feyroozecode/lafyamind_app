@@ -35,7 +35,7 @@ class _HomeWidgetState extends ConsumerState<HomeWidget> {
             const MoodTrackerCard(), 
             gapH12,
             const EmergencyHelpCard(),
-            gapH12
+        
           ]
             // OLD DayHomourWidget()],
         ),

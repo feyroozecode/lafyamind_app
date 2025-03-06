@@ -38,10 +38,24 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: screenPadding,
-      child: SafeArea(
-          child: Scaffold(
+    return 
+          Scaffold(
+            appBar: AppBar(
+              title: const Text('Lafyamind',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primary,
+                  )),
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.notifications),
+                  onPressed: () {
+                    // Handle notification button press
+                  },
+                ),
+              ],
+            ),
           backgroundColor: AppColors.background,
           body: screens[selectedTab],
           bottomNavigationBar: BottomNavigationBar(
@@ -63,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             items: items,
         ),
-        persistentFooterAlignment: AlignmentDirectional.center,
+        //persistentFooterAlignment: AlignmentDirectional.center,
         // persistentFooterButtons: [
         //   Container(
         //     padding: const EdgeInsets.all(10),
@@ -88,8 +102,8 @@ class _HomeScreenState extends State<HomeScreen> {
         //     ),
         //   ),
         // ],
-      )
-      ),
+      
+      
     );
   }
 }

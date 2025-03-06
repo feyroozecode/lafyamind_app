@@ -4,6 +4,8 @@ import 'package:lafyamind_app/src/constants/app_spacing.dart';
 import 'package:lafyamind_app/src/features/home/chatbot/application/chatbot_notifier.dart';
 import 'package:lafyamind_app/src/features/home/chatbot/domain/chat_message.dart';
 
+import '../../../../constants/app_size.dart';
+
 class ChatbotScreen extends ConsumerStatefulWidget {
   const ChatbotScreen({super.key});
 
@@ -50,7 +52,8 @@ class _ChatbotScreenState extends ConsumerState<ChatbotScreen> {
             "Ravi de vous rencontrer! Comment puis-je vous être utile?",
             "Je suis prêt à vous aider. Quelle est votre question?",
             "Bienvenue! Je suis à votre écoute. Que souhaitez-vous savoir?"
-          ][DateTime.now().microsecond % 5]);
+          ][DateTime.now().microsecond % 5]
+        );
         _scrollToBottom();
       });
     }
@@ -62,7 +65,7 @@ class _ChatbotScreenState extends ConsumerState<ChatbotScreen> {
     
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Assistant Lafyamind'),
+        title: const Text('Assistant Lafyamind 🤖 '),
         elevation: 1,
       ),
       body: Column(
@@ -164,7 +167,7 @@ class _ChatMessageBubble extends StatelessWidget {
         mainAxisAlignment: isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (!isUser) _buildAvatar(),
+          if (!isUser) _buildBotAvatar(),
           const SizedBox(width: 8),
           Flexible(
             child: Container(
@@ -183,14 +186,14 @@ class _ChatMessageBubble extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 8),
+          gapW8,
           if (isUser) _buildUserAvatar(),
         ],
       ),
     );
   }
 
-  Widget _buildAvatar() {
+  Widget _buildBotAvatar() {
     return const CircleAvatar(
       radius: 16,
       backgroundColor: Colors.blue,
