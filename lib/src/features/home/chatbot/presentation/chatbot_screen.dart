@@ -1,40 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lafyamind_app/src/constants/app_spacing.dart';
-
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-class ChatMessagesNotifier extends StateNotifier<List<ChatMessage>> {
-  ChatMessagesNotifier() : super([]);
-
-  void addUserMessage(String text) {
-    state = [...state, ChatMessage(text: text, isUser: true)];
-  }
-
-  void addBotMessage(String text) {
-    state = [...state, ChatMessage(text: text, isUser: false)];
-  }
-
-  void clearMessages() {
-    state = [];
-  }
-}
-
-final chatMessagesProvider = StateNotifierProvider<ChatMessagesNotifier, List<ChatMessage>>((ref) {
-  return ChatMessagesNotifier();
-});
-
-class ChatMessage {
-  final String text;
-  final DateTime timestamp;
-  final bool isUser;
-
-  ChatMessage({
-    required this.text,
-    required this.isUser,
-    DateTime? timestamp,
-  }) : timestamp = timestamp ?? DateTime.now();
-}
+import 'package:lafyamind_app/src/features/home/chatbot/application/chatbot_notifier.dart';
+import 'package:lafyamind_app/src/features/home/chatbot/domain/chat_message.dart';
 
 class ChatbotScreen extends ConsumerStatefulWidget {
   const ChatbotScreen({super.key});
