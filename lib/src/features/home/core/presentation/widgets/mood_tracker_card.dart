@@ -41,7 +41,7 @@ class MoodSelector extends ConsumerWidget {
         TextField(
           onChanged: (value) => ref.read(moodNoteProvider.notifier).state = value,
           decoration: const InputDecoration(
-            hintText: 'Add a note (optional)',
+            hintText: 'Ajoutez une note (optionnel)',
             border: OutlineInputBorder(),
           ),
           maxLines: 2,
@@ -136,9 +136,15 @@ class MoodTrackerCard extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'How are you feeling today?',
-                  style: Theme.of(context).textTheme.titleLarge,
+                Expanded(
+                  child: Text(
+                    'Comment vous sentez-vous aujourd\'hui ?',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
                 IconButton(
                   icon: const Icon(Icons.history),
@@ -154,7 +160,7 @@ class MoodTrackerCard extends ConsumerWidget {
             const Divider(),
             const SizedBox(height: 8),
             Text(
-              'Your mood history',
+              'Historique de votre humeur',
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
@@ -169,7 +175,7 @@ class MoodTrackerCard extends ConsumerWidget {
                   
                   // In a real app, you would save this to your data source
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Mood saved: Level $currentMood')),
+                    SnackBar(content: Text('Humeur enregistrée: Niveau $currentMood')),
                   );
                   
                   // Reset note after saving
@@ -181,7 +187,7 @@ class MoodTrackerCard extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text('Save Today\'s Mood'),
+                child: const Text('Enregistrer l\'humeur du jour'),
               ),
             ),
           ],
