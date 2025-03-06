@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lafyamind_app/src/constants/app_spacing.dart';
+import 'package:lafyamind_app/src/features/home/chatbot/presentation/chatbot_screen.dart';
 import 'package:lafyamind_app/src/features/home/core/presentation/widgets/home_widget.dart';
 
 import '../../../../constants/app_colors.dart';
@@ -19,7 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
       4,
       (int i) => i == 0
           ? const HomeWidget()
-          : SizedBox(
+          : i == 1 ?
+           const ChatbotScreen() :
+          SizedBox(
               child: Center(
                 child: Text("Screen $i"),
               ),
