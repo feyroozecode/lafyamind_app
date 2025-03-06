@@ -1,6 +1,8 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lafyamind_app/src/constants/app_spacing.dart';
 import 'package:lafyamind_app/src/features/home/core/presentation/widgets/daily_widget.dart';
+import 'package:lafyamind_app/src/features/home/core/presentation/widgets/emergency_help_card.dart';
+import 'package:lafyamind_app/src/features/home/core/presentation/widgets/mood_tracker_card.dart';
 
 import '../../../../core/common_import.dart';
 import 'day_homour_widget.dart';
@@ -17,8 +19,25 @@ class _HomeWidgetState extends ConsumerState<HomeWidget> {
   Widget build(BuildContext context) {
     return Padding(
         padding: screenPadding,
-        child: Column(
-          children: [const DailyWidget(), DayHomourWidget()],
-        ));
+        child: SingleChildScrollView(
+          child:  Column(
+          children: [
+            Text(
+                'Welcome back!',
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              gapH12,
+            const MoodTrackerCard(), 
+            gapH12,
+            const EmergencyHelpCard(),
+            gapH12,
+            const DailyWidget(),
+            gapH12,
+             DayHomourWidget()],
+        ),
+        )
+        );
   }
 }

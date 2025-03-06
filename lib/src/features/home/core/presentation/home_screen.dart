@@ -39,28 +39,54 @@ class _HomeScreenState extends State<HomeScreen> {
       padding: screenPadding,
       child: SafeArea(
           child: Scaffold(
-        backgroundColor: AppColors.background,
-        body: screens[selectedTab],
-        bottomNavigationBar: BottomNavigationBar(
-          elevation: 10,
-          currentIndex: selectedTab,
-          selectedFontSize: 12,
-          iconSize: 24,
-          unselectedFontSize: 10,
-          type: BottomNavigationBarType.fixed,
-          showSelectedLabels: true,
-          showUnselectedLabels: false,
-          selectedIconTheme: const IconThemeData(size: 20),
-          selectedItemColor: Colors.purple,
-          unselectedItemColor: Colors.grey,
-          onTap: (int index) {
-            setState(() {
-              selectedTab = index;
-            });
-          },
-          items: items,
+          backgroundColor: AppColors.background,
+          body: screens[selectedTab],
+          bottomNavigationBar: BottomNavigationBar(
+            elevation: 10,
+            currentIndex: selectedTab,
+            selectedFontSize: 12,
+            iconSize: 24,
+            unselectedFontSize: 10,
+            type: BottomNavigationBarType.fixed,
+            showSelectedLabels: true,
+            showUnselectedLabels: false,
+            selectedIconTheme: const IconThemeData(size: 20),
+            selectedItemColor: Colors.purple,
+            unselectedItemColor: Colors.grey,
+            onTap: (int index) {
+              setState(() {
+                selectedTab = index;
+              });
+            },
+            items: items,
         ),
-      )),
+        persistentFooterAlignment: AlignmentDirectional.center,
+        // persistentFooterButtons: [
+        //   Container(
+        //     padding: const EdgeInsets.all(10),
+        //     decoration: BoxDecoration(
+        //       color: Colors.white,
+        //       borderRadius: BorderRadius.circular(10),
+        //       boxShadow: [
+        //         BoxShadow(
+        //           color: Colors.grey.withOpacity(0.5),
+        //           spreadRadius: 2,
+        //           blurRadius: 5,
+        //           offset: const Offset(0, 3),
+        //         ),
+        //       ],
+        //     ),
+        //     child: const Text(
+        //       '© 2023 Lafyamind',
+        //       style: TextStyle(
+        //         fontSize: 12,
+        //         fontWeight: FontWeight.bold,
+        //       ),
+        //     ),
+        //   ),
+        // ],
+      )
+      ),
     );
   }
 }
