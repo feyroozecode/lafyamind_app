@@ -29,8 +29,13 @@ class FeedListScreen extends ConsumerWidget {
     }
 
     // 3. Build the list using ListView.builder
-    return Expanded(
-      child: _buildList(context, feedItems),
+    return Scaffold(
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: true,
+      //   // title: const Text('Articles'),
+      //   //elevation: 1,
+      // ),
+      body: _buildList(context, feedItems),
     );
   }
 

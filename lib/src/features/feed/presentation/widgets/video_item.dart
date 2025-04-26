@@ -1,6 +1,7 @@
 // lib/src/features/feed/presentation/widgets/video_item_widget.dart
 import 'package:flutter/material.dart';
 import 'package:lafyamind_app/src/features/feed/domain/feed_item.dart';
+import 'package:logger/web.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
 
@@ -28,7 +29,7 @@ class _VideoItemWidgetState extends State<VideoItemWidget> {
   Future<void> _initializePlayer() async {
     // Use Uri.parse for robustness
     final videoUri = Uri.parse(widget.item.videoUrl);
-    _videoPlayerController = VideoPlayerController.networkUrl(videoUri);
+    _videoPlayerController = VideoPlayerController.asset(videoUri.path);
 
     try {
       await _videoPlayerController.initialize(); // Initialize the player
@@ -51,7 +52,8 @@ class _VideoItemWidgetState extends State<VideoItemWidget> {
       });
     } catch (e) {
       // Handle initialization errors (e.g., network issues, invalid URL)
-      print("Error initializing video player: $e");
+      Logger log = Logger();
+      log.i("Error initializing video player: $e");
       setState(() {
         _isLoading = false; // Stop loading on error
         // Optionally show an error state in the UI
@@ -71,7 +73,7 @@ class _VideoItemWidgetState extends State<VideoItemWidget> {
     return Stack(
       fit: StackFit.expand,
       children: [
-        Image.network(
+        Image.asset(
           widget.item.thumbnailUrl,
           fit: BoxFit.cover,
           // Add error builder for thumbnail loading errors

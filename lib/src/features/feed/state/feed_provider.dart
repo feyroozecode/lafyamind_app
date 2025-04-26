@@ -30,9 +30,9 @@ final feedProvider = Provider<List<FeedItem>>((ref) {
     ),
     VideoItem(
       id: 'video1',
-      title: 'Guided Meditation for Relaxation',
-      channel: 'Calm Minds',
-      videoUrl: 'https://example.com/meditation-video',
+      title: 'Introducton au Sante Mental',
+      channel: 'Dr Zoulkerneini Issa Maiga',
+      videoUrl: 'assets/videos/intro1.mp4',
       thumbnailUrl:
           'https://images.pexels.com/photos/3771089/pexels-photo-3771089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       timestamp: DateTime.now().subtract(const Duration(hours: 10)),

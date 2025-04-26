@@ -6,6 +6,7 @@ import 'package:lafyamind_app/src/features/feed/presentation/feed_screen.dart';
 import 'package:lafyamind_app/src/features/home/presentation/widgets/home_widget.dart';
 
 import '../../../constants/app_colors.dart';
+import '../../learn/presentation/learn_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,11 +24,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ? const HomeWidget()
           : i == 1
               ? const FeedListScreen()
-              : SizedBox(
-                  child: Center(
-                    child: Text("Screen $i"),
-                  ),
-                ));
+              : i == 2
+                  ? const LearningScreen()
+                  : SizedBox(
+                      child: Center(
+                        child: Text("Screen $i"),
+                      ),
+                    ));
   List<BottomNavigationBarItem> items = <BottomNavigationBarItem>[
     const BottomNavigationBarItem(label: "Aujhourdui", icon: Icon(Icons.home)),
     const BottomNavigationBarItem(
@@ -37,12 +40,28 @@ class _HomeScreenState extends State<HomeScreen> {
     const BottomNavigationBarItem(label: "Plus", icon: Icon(Icons.more_horiz))
   ];
 
+  // screenTitle
+  String getScreenTitle() {
+    switch (selectedTab) {
+      case 0:
+        return 'Lafyamind';
+      case 1:
+        return 'Articles';
+      case 2:
+        return 'Apprendre';
+      case 3:
+        return 'Plus';
+      default:
+        return 'Accueil';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Lafyamind',
-            style: TextStyle(
+        title: Text(getScreenTitle(),
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: AppColors.primary,

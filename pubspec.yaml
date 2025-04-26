@@ -48,6 +48,7 @@ dependencies:
   chewie: ^1.10.0
   video_player: ^2.9.5
   logger: ^2.5.0
+  flutter_markdown: ^0.7.7
 
 dev_dependencies:
   flutter_test:
@@ -103,6 +104,8 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  #
+  assets:
+    - assets/videos/
+  #- assets/icons/
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
