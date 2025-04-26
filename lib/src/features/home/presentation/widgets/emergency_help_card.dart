@@ -5,7 +5,7 @@ import 'package:lafyamind_app/src/constants/app_spacing.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../domain/emergency_contact.dart';
-import '../providers/emergency_helper_provider.dart';
+import '../../state/emergency_helper_provider.dart';
 
 // Static emergency contacts for testing
 class EmergencyHelpCard extends ConsumerWidget {
@@ -41,7 +41,7 @@ class EmergencyHelpCard extends ConsumerWidget {
                 gapH12,
                 Expanded(
                   child: Text(
-                    'Voulez-vous parler à un conseiller en crise maintenant ?',
+                    'Voulez-vous parler à un conseiller maintenant ?',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: inCrisisMode ? Colors.red : Colors.black87,
                           fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ class EmergencyHelpCard extends ConsumerWidget {
             ),
             gapH16,
             Text(
-              'Nous sommes là pour vous aider. Connectez-vous avec un conseiller en crise maintenant.',
+              'Nous sommes là pour vous aider. Connectez un de nos conseiller maintenant.',
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             gapH16,
@@ -88,7 +88,8 @@ class EmergencyHelpCard extends ConsumerWidget {
     );
   }
 
-  void _showEmergencyDialog(BuildContext context, List<EmergencyContact> contacts) {
+  void _showEmergencyDialog(
+      BuildContext context, List<EmergencyContact> contacts) {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -142,9 +143,9 @@ class EmergencyHelpCard extends ConsumerWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Appel en cours vers ${contact.name}...')),
             );
-           Future.delayed(Duration(seconds: 2), () {
+            Future.delayed(Duration(seconds: 2), () {
               launchUrlString('tel:${0022799463594}');
-           });
+            });
           },
         ),
       ),
@@ -169,7 +170,7 @@ class EmergencyResourcesList extends StatelessWidget {
           spacing: 8,
           runSpacing: 8,
           children: [
-            _buildResourceChip(context, 'Exercice de respiration', Icons.air),
+            _buildResourceChip(context, 'Exo Respiration', Icons.air),
             _buildResourceChip(context, 'Techniques d\'ancrage', Icons.spa),
             _buildResourceChip(context, 'Plan de crise', Icons.checklist),
           ],

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:lafyamind_app/src/constants/app_size.dart';
 
-import '../providers/mood_provider.dart';
-
+import '../../state/mood_provider.dart';
 
 // Widget for selecting mood
 class MoodSelector extends ConsumerWidget {
@@ -19,22 +19,20 @@ class MoodSelector extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentMood = ref.watch(currentMoodProvider);
-    
+
     return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: moodList.map((mood) => _buildMoodButton(
-            ref,
-            mood['level'],
-            mood['emoji'],
-            mood['color'],
-            currentMood
-          )).toList(),
+          children: moodList
+              .map((mood) => _buildMoodButton(ref, mood['level'], mood['emoji'],
+                  mood['color'], currentMood))
+              .toList(),
         ),
-        const SizedBox(height: 16),
+        gapH12,
         TextField(
-          onChanged: (value) => ref.read(moodNoteProvider.notifier).state = value,
+          onChanged: (value) =>
+              ref.read(moodNoteProvider.notifier).state = value,
           decoration: const InputDecoration(
             hintText: 'Ajoutez une note (optionnel)',
             border: OutlineInputBorder(),
@@ -45,9 +43,10 @@ class MoodSelector extends ConsumerWidget {
     );
   }
 
-  Widget _buildMoodButton(WidgetRef ref, int moodValue, String emoji, Color color, int currentMood) {
+  Widget _buildMoodButton(WidgetRef ref, int moodValue, String emoji,
+      Color color, int currentMood) {
     final isSelected = moodValue == currentMood;
-    
+
     return GestureDetector(
       onTap: () => ref.read(currentMoodProvider.notifier).state = moodValue,
       child: AnimatedContainer(
@@ -76,21 +75,27 @@ class MoodHistoryView extends ConsumerWidget {
 
   Color _getMoodColor(int moodLevel) {
     switch (moodLevel) {
-      case 1: return Colors.red;
-      case 2: return Colors.orange;
-      case 3: return Colors.yellow;
-      case 4: return Colors.green;
-      case 5: return Colors.blue;
-      default: return Colors.grey;
+      case 1:
+        return Colors.red;
+      case 2:
+        return Colors.orange;
+      case 3:
+        return Colors.yellow;
+      case 4:
+        return Colors.green;
+      case 5:
+        return Colors.blue;
+      default:
+        return Colors.grey;
     }
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final moodHistory = ref.watch(moodHistoryProvider);
-    
+
     return SizedBox(
-      height: 100,
+      height: 90,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: moodHistory.length,
@@ -102,7 +107,7 @@ class MoodHistoryView extends ConsumerWidget {
               children: [
                 Text(
                   _getMoodEmoji(entry.moodLevel),
-                  style: const TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 20),
                 ),
                 Text(
                   '${entry.date.day}/${entry.date.month}',
@@ -118,12 +123,18 @@ class MoodHistoryView extends ConsumerWidget {
 
   String _getMoodEmoji(int moodLevel) {
     switch (moodLevel) {
-      case 1: return '😢';
-      case 2: return '😕';
-      case 3: return '😐';
-      case 4: return '🙂';
-      case 5: return '😄';
-      default: return '😐';
+      case 1:
+        return '😢';
+      case 2:
+        return '😕';
+      case 3:
+        return '😐';
+      case 4:
+        return '🙂';
+      case 5:
+        return '😄';
+      default:
+        return '😐';
     }
   }
 }
@@ -152,8 +163,8 @@ class MoodTrackerCard extends ConsumerWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontSize: 20,
-                    ),
+                          fontSize: 20,
+                        ),
                   ),
                 ),
                 IconButton(
@@ -166,40 +177,41 @@ class MoodTrackerCard extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             const MoodSelector(),
-            const SizedBox(height: 16),
-            const Divider(),
-            const SizedBox(height: 8),
-            Text(
-              'Historique de votre humeur',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 8),
-            const MoodHistoryView(),
-            const SizedBox(height: 16),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  final currentMood = ref.read(currentMoodProvider);
-                  final note = ref.read(moodNoteProvider);
-                  
-                  // In a real app, you would save this to your data source
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Humeur enregistrée: Niveau $currentMood')),
-                  );
-                  
-                  // Reset note after saving
-                  ref.read(moodNoteProvider.notifier).state = '';
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: const Text('Enregistrer l\'humeur du jour'),
-              ),
-            ),
+            gapH12,
+            // const Divider(),
+            // gapH12,
+            // Text(
+            //   'Historique de votre humeur',
+            //   style: Theme.of(context).textTheme.titleMedium,
+            // ),
+            // const SizedBox(height: 8),
+            // const MoodHistoryView(),
+            // SizedBox(
+            //   width: double.infinity,
+            //   child: ElevatedButton(
+            //     onPressed: () {
+            //       final currentMood = ref.read(currentMoodProvider);
+            //       final note = ref.read(moodNoteProvider);
+
+            //       // In a real app, you would save this to your data source
+            //       ScaffoldMessenger.of(context).showSnackBar(
+            //         SnackBar(
+            //             content:
+            //                 Text('Humeur enregistrée: Niveau $currentMood')),
+            //       );
+
+            //       // Reset note after saving
+            //       ref.read(moodNoteProvider.notifier).state = '';
+            //     },
+            //     style: ElevatedButton.styleFrom(
+            //       padding: const EdgeInsets.symmetric(vertical: 12),
+            //       shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(8),
+            //       ),
+            //     ),
+            //     child: const Text('Enregistrer l\'humeur du jour'),
+            //   ),
+            // ),
           ],
         ),
       ),

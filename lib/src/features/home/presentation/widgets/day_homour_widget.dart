@@ -1,6 +1,7 @@
 import 'package:lafyamind_app/src/features/core/common_import.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lafyamind_app/src/features/home/core/application/mood_notifier.dart';
+import 'package:lafyamind_app/src/features/home/application/mood_notifier.dart';
+import 'package:logger/logger.dart';
 
 class DayHomourWidget extends ConsumerWidget {
   DayHomourWidget({super.key});
@@ -28,7 +29,7 @@ class DayHomourWidget extends ConsumerWidget {
     return Card(
       margin: screenPadding,
       child: Padding(
-          padding: screenPadding,
+          padding: pad12,
           child: Column(
             children: [
               Text("Comment vous sentez-vous aujourd’hui ?",
@@ -39,8 +40,9 @@ class DayHomourWidget extends ConsumerWidget {
                 children: humourMoodList
                     .map((mood) => IconButton(
                         onPressed: () {
+                          Logger logger = Logger();
                           humourlevel.updateMood(mood['level']);
-                          print(ref.watch(moodlevelProvider));
+                          logger.i(ref.watch(moodlevelProvider));
                         },
                         icon: AnimatedContainer(
                           duration: const Duration(milliseconds: 300),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lafyamind_app/src/constants/app_spacing.dart';
-import 'package:lafyamind_app/src/features/home/chatbot/application/chatbot_notifier.dart';
-import 'package:lafyamind_app/src/features/home/chatbot/domain/chat_message.dart';
+import 'package:lafyamind_app/src/features/chatbot/application/chatbot_notifier.dart';
+import 'package:lafyamind_app/src/features/chatbot/domain/chat_message.dart';
 
-import '../../../../constants/app_size.dart';
+import '../../../constants/app_size.dart';
 
 class ChatbotScreen extends ConsumerStatefulWidget {
   const ChatbotScreen({super.key});

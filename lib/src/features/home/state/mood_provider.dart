@@ -2,7 +2,7 @@
 // Provider for mood history
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../domain/mood_entry.dart';
+import '../domain/mood_entry.dart';
 
 final moodlistProvider = StateProvider<List<MoodEntry>>((ref) => // Static data for testing
 [

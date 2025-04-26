@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'features/home/core/presentation/home_screen.dart';
+import 'features/home/presentation/home_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'tXapp',
+        title: 'lafyamind_app',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
