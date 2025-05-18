@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:lafyamind_app/src/constants/app_spacing.dart';
 import 'package:lafyamind_app/src/features/feed/presentation/feed_screen.dart';
 import 'package:lafyamind_app/src/features/home/state/home_provider.dart';
 import 'package:lafyamind_app/src/features/home/presentation/widgets/emergency_help_card.dart';

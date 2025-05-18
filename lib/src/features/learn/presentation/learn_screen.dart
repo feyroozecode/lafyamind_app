@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:lafyamind_app/src/constants/app_theme.dart';
 import 'package:lafyamind_app/src/features/core/common_import.dart';
 
-import 'learning_article_detail.dart'; // Use if you need Riverpod state later
+// Use if you need Riverpod state later
 
 class LearningScreen extends ConsumerWidget {
   // Or StatelessWidget if no state needed yet

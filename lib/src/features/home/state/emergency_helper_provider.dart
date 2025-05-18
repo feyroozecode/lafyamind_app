@@ -2,7 +2,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../domain/emergency_contact.dart';
-import '../presentation/widgets/emergency_help_card.dart';
 
 final emergencyContactListProvider = StateProvider<List<EmergencyContact>>((ref) {
   return [
