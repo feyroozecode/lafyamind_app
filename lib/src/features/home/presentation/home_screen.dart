@@ -3,9 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lafyamind_app/src/features/chatbot/presentation/chatbot_screen.dart';
 import 'package:lafyamind_app/src/features/feed/presentation/feed_screen.dart';
 import 'package:lafyamind_app/src/features/home/presentation/widgets/home_widget.dart';
+import 'package:lafyamind_app/src/features/learn/presentation/learn_screen.dart';
 
 import '../../../constants/app_colors.dart';
-import '../../learn/presentation/learn_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -36,14 +36,11 @@ class LearningScreen extends ConsumerWidget {
                 title: 'Comprendre la Santé Mentale',
                 description: 'Articles et guides sur divers sujets.',
                 onTap: () {
-                  // TODO: Navigate to a specific sub-section or list of articles
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text(
-                          'Navigation vers les articles (à implémenter)')));
-                
-                // context.push(const LearningArticleScreen(
-                //   article: learningArticlesProvider[0],
-                // ));
+                  // Navigate to mental health articles screen
+                  // Navigator.push(
+                  //   context,
+                  //   //MentalHealthScreen.route(),
+                  // );
                 }),
             const SizedBox(height: 16),
             _buildLearningSection(

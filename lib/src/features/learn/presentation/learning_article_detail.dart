@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart'; // Import Markdown package
+import 'package:lafyamind_app/src/features/core/common_import.dart';
 
-import '../../../constants/app_size.dart';
 import '../domain/learning_article.dart'; // Assuming you have this for gaps
+import '../state/mental_health_provider.dart';
 
 class LearningArticleScreen extends StatelessWidget {
   final LearningArticle article;
@@ -104,28 +106,71 @@ class LearningArticleScreen extends StatelessWidget {
               gapH16,
 
               // Main Content (Rendered as Markdown)
-              MarkdownBody(
-                data: article.fullContent,
-                selectable: true, // Allow users to select/copy text
-                // Optional: Style Markdown elements
-                styleSheet:
-                    MarkdownStyleSheet.fromTheme(Theme.of(context)).copyWith(
-                  p: textTheme.bodyLarge
-                      ?.copyWith(fontSize: 16), // Adjust paragraph style
-                  h1: textTheme.headlineSmall,
-                  h2: textTheme.titleLarge,
-                  // Add other styles as needed
-                ),
-                onTapLink: (text, href, title) {
-                  // TODO: Handle link taps (e.g., open in browser using url_launcher)
-                  if (href != null) {
-                    print('Tapped link: $href');
-                    // Example: launchUrl(Uri.parse(href));
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('Lien cliqué (à implémenter) : $href')));
-                  }
-                },
-              ),
+              // Check if fullContent is a file path or direct content
+              article.fullContent.startsWith('assets/')
+                  ? FutureBuilder<String>(
+                      future: loadMarkdownContent(article.fullContent),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        } else if (snapshot.hasError) {
+                          return Center(
+                            child: Text(
+                              'Erreur de chargement: ${snapshot.error}',
+                              style: TextStyle(color: Colors.red),
+                            ),
+                          );
+                        } else if (snapshot.hasData) {
+                          return MarkdownBody(
+                            data: snapshot.data!,
+                            selectable: true,
+                            styleSheet:
+                                MarkdownStyleSheet.fromTheme(Theme.of(context))
+                                    .copyWith(
+                              p: textTheme.bodyLarge?.copyWith(fontSize: 16),
+                              h1: textTheme.headlineSmall,
+                              h2: textTheme.titleLarge,
+                            ),
+                            onTapLink: (text, href, title) {
+                              if (href != null) {
+                                print('Tapped link: $href');
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                    content: Text(
+                                        'Lien cliqué (à implémenter) : $href')));
+                              }
+                            },
+                          );
+                        } else {
+                          return const Text('Aucun contenu disponible');
+                        }
+                      },
+                    )
+                  : MarkdownBody(
+                      data: article.fullContent,
+                      selectable: true, // Allow users to select/copy text
+                      // Optional: Style Markdown elements
+                      styleSheet:
+                          MarkdownStyleSheet.fromTheme(Theme.of(context))
+                              .copyWith(
+                        p: textTheme.bodyLarge
+                            ?.copyWith(fontSize: 16), // Adjust paragraph style
+                        h1: textTheme.headlineSmall,
+                        h2: textTheme.titleLarge,
+                        // Add other styles as needed
+                      ),
+                      onTapLink: (text, href, title) {
+                        // TODO: Handle link taps (e.g., open in browser using url_launcher)
+                        if (href != null) {
+                          print('Tapped link: $href');
+                          // Example: launchUrl(Uri.parse(href));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content:
+                                  Text('Lien cliqué (à implémenter) : $href')));
+                        }
+                      },
+                    ),
             ],
           ),
         ),
