@@ -48,6 +48,8 @@ dependencies:
   video_player: ^2.9.5
   logger: ^2.5.0
   flutter_markdown: ^0.7.7
+  table_calendar: ^3.0.9
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:

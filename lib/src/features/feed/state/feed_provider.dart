@@ -7,6 +7,15 @@ import '../domain/feed_item.dart';
 // Le provider qui expose un feed de 10 items mélangés
 final feedProvider = Provider<List<FeedItem>>((ref) {
   final List<FeedItem> allItems = [
+    VideoItem(
+      id: 'video1',
+      title: 'Introducton au Sante Mental',
+      channel: 'Dr Zoulkerneini Issa Maiga',
+      videoUrl: 'assets/videos/intro1.mp4',
+      thumbnailUrl:
+          'https://images.pexels.com/photos/3771089/pexels-photo-3771089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      timestamp: DateTime.now().subtract(const Duration(hours: 10)),
+    ),
     PostItem(
       id: 'post1',
       title: 'Conseil de pleine conscience du jour',
@@ -28,15 +37,7 @@ final feedProvider = Provider<List<FeedItem>>((ref) {
       imageUrl:
           'https://images.pexels.com/photos/7176026/pexels-photo-7176026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     ),
-    VideoItem(
-      id: 'video1',
-      title: 'Introducton au Sante Mental',
-      channel: 'Dr Zoulkerneini Issa Maiga',
-      videoUrl: 'assets/videos/intro1.mp4',
-      thumbnailUrl:
-          'https://images.pexels.com/photos/3771089/pexels-photo-3771089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      timestamp: DateTime.now().subtract(const Duration(hours: 10)),
-    ),
+
     PostItem(
       id: 'post2',
       title: 'Bienfaits de la tenue d\'un journal',
