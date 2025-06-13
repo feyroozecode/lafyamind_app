@@ -1,0 +1,21 @@
+name: Flutter CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.24.5" # Replace with your desired Flutter version
+      - name: Install Dependencies
+        run: flutter pub get
+      - name: Run Analysis and Tests
+        run: flutter analyze && flutter test
+      - name: Build App
+        run: flutter build apk # or flutter build ios --release
