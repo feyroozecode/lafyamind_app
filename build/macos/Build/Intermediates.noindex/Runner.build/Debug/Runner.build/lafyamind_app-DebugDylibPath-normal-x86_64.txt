@@ -1,0 +1,1 @@
+lafyamind_app.debug.dylib

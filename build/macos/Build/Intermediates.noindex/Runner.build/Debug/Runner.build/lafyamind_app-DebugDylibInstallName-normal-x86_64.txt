@@ -1,0 +1,1 @@
+@rpath/lafyamind_app.debug.dylib
