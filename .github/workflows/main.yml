@@ -1,4 +1,4 @@
-name: Build Android & Windows with Release
+name: Build Android & Windows in Debug and Release
 
 on:
   push:
