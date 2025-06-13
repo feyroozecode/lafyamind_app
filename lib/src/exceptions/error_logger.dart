@@ -16,4 +16,4 @@ class ErrorLogger {
 }
 
 @riverpod
-ErrorLogger erroLogger(Ref ref) => ErrorLogger();
+ErrorLogger errorLogger(Ref ref) => ErrorLogger();
