@@ -52,27 +52,28 @@ jobs:
       #     FLUTTER_BUILD_NUMBER: ${{ needs.setup.outputs.build_number }}
 
       - name: Build Release APK
-        run: flutter build apk --release
+        run: flutter build apk --release --no-tree-shake-icons
+
         env:
           FLUTTER_BUILD_NAME: ${{ needs.setup.outputs.version_name }}
           FLUTTER_BUILD_NUMBER: ${{ needs.setup.outputs.build_number }}
 
-      - name: Rename APKs
-        run: |
-          mv build/app/outputs/flutter-apk/app-debug.apk "app-debug-${{ needs.setup.outputs.build_number }}.apk"
-          mv build/app/outputs/flutter-apk/app-release.apk "app-release-${{ needs.setup.outputs.build_number }}.apk"
+      # - name: Rename APKs
+      #   run: |
+      #     mv build/app/outputs/flutter-apk/app-debug.apk "app-debug-${{ needs.setup.outputs.build_number }}.apk"
+      #     mv build/app/outputs/flutter-apk/app-release.apk "app-release-${{ needs.setup.outputs.build_number }}.apk"
 
-      - name: Upload Debug APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-debug-apk
-          path: "app-debug-${{ needs.setup.outputs.build_number }}.apk"
+      # - name: Upload Debug APK
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: android-debug-apk
+      #     path: "app-debug-${{ needs.setup.outputs.build_number }}.apk"
 
       - name: Upload Release APK
         uses: actions/upload-artifact@v4
         with:
           name: android-release-apk
-          path: "app-release-${{ needs.setup.outputs.build_number }}.apk"
+          path: build/app/outputs/flutter-apk/app-release.apk
 
   windows-build:
     runs-on: windows-latest
