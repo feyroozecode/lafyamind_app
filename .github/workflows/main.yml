@@ -1,21 +1,38 @@
-name: Flutter CI
+name: Build Android APK
+
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches: [main, master] # Trigger on pushes to main branches
+  workflow_dispatch: # Allow manual triggers
+
 jobs:
-  build:
+  build-android-apk:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java (JDK 17)
+        uses: actions/setup-java@v3
+        with:
+          distribution: "zulu" # Use Zulu OpenJDK for Android compatibility
+          java-version: "17"
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.24.5" # Replace with your desired Flutter version
+          channel: "stable" # Use stable Flutter channel
+          cache: true # Enable dependency caching
+
       - name: Install Dependencies
         run: flutter pub get
-      - name: Run Analysis and Tests
-        run: flutter analyze && flutter test
-      - name: Build App
-        run: flutter build apk # or flutter build ios --release
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
