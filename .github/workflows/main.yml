@@ -45,11 +45,11 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
 
-      - name: Build Debug APK
-        run: flutter build apk --debug
-        env:
-          FLUTTER_BUILD_NAME: ${{ needs.setup.outputs.version_name }}
-          FLUTTER_BUILD_NUMBER: ${{ needs.setup.outputs.build_number }}
+      # - name: Build Debug APK
+      #   run: flutter build apk --debug
+      #   env:
+      #     FLUTTER_BUILD_NAME: ${{ needs.setup.outputs.version_name }}
+      #     FLUTTER_BUILD_NUMBER: ${{ needs.setup.outputs.build_number }}
 
       - name: Build Release APK
         run: flutter build apk --release
