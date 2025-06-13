@@ -2,7 +2,7 @@ name: Build Android APK
 
 on:
   push:
-    branches: [main, master] # Trigger on pushes to main branches
+    branches: [main] # Trigger on pushes to main branches
   workflow_dispatch: # Allow manual triggers
 
 jobs:
@@ -27,6 +27,9 @@ jobs:
 
       - name: Install Dependencies
         run: flutter pub get
+
+      - name: Build debug Apk
+        run: flutter build apk --debug
 
       - name: Build APK
         run: flutter build apk --release
