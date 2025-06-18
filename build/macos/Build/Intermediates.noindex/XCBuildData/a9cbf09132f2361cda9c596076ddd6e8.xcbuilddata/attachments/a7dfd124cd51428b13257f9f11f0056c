@@ -1,0 +1,18 @@
+{
+  "" : {
+    "diagnostics" : "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/x86_64/app_links-master.dia",
+    "emit-module-dependencies" : "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/x86_64/app_links-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/x86_64/app_links-master-emit-module.dia",
+    "swift-dependencies" : "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/x86_64/app_links-master.swiftdeps"
+  },
+  "/Users/ahmad/.pub-cache/hosted/pub.dev/app_links-6.3.3/macos/Classes/AppLinksMacosPlugin.swift" : {
+    "const-values" : "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/x86_64/AppLinksMacosPlugin.swiftconstvalues",
+    "dependencies" : "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/x86_64/AppLinksMacosPlugin.d",
+    "diagnostics" : "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/x86_64/AppLinksMacosPlugin.dia",
+    "index-unit-output-path" : "/Pods.build/Debug/app_links.build/Objects-normal/x86_64/AppLinksMacosPlugin.o",
+    "llvm-bc" : "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/x86_64/AppLinksMacosPlugin.bc",
+    "object" : "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/x86_64/AppLinksMacosPlugin.o",
+    "swift-dependencies" : "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/x86_64/AppLinksMacosPlugin.swiftdeps",
+    "swiftmodule" : "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/Objects-normal/x86_64/AppLinksMacosPlugin~partial.swiftmodule"
+  }
+}

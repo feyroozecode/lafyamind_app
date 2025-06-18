@@ -1,0 +1,23 @@
+{
+  'version': 0,
+  'use-external-names': 'false',
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Products/Debug/app_links/app_links.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/unextended-module.modulemap",
+    }]
+    },
+    {
+    'type': 'directory',
+    'name': "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Products/Debug/app_links/app_links.framework/Headers"
+    'contents': [{
+      'type': 'file',
+      'name': "app_links-Swift.h",
+      'external-contents': "/Users/ahmad/dev/mobile_apps/startup_apps/lafyamind_app/build/macos/Build/Intermediates.noindex/Pods.build/Debug/app_links.build/unextended-interface-header.h",
+    }]
+    }]
+}
